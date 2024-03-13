@@ -6,7 +6,7 @@ namespace EFTest.Data
 {
     public class AppDbContext : DbContext
     {
-        public DbSet<Vector> Vectors { get; set; }
+        public DbSet<VectorModel> Vectors { get; set; }
 
         public AppDbContext()
         {

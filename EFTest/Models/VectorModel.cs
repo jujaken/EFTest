@@ -1,6 +1,6 @@
 ﻿namespace EFTest.Models
 {
-    public class Vector
+    public class VectorModel
     {
         public int Id { get; set; }
         public double[]? Coordinates { get; set; }
