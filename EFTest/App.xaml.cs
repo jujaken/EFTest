@@ -20,6 +20,7 @@ namespace EFTest
             var serviceCollection = new ServiceCollection()
                 .AddDbContext<AppDbContext>()
                 .AddTransient<IRepo<VectorModel>, Repo<VectorModel>>()
+                .AddTransient<MainVM>()
                 .AddTransient<VectorVM>();
 
             return serviceCollection.BuildServiceProvider();

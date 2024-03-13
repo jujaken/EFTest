@@ -1,5 +1,4 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
-using CommunityToolkit.Mvvm.DependencyInjection;
 using CommunityToolkit.Mvvm.Input;
 using EFTest.Data;
 using EFTest.Models;
@@ -44,7 +43,7 @@ namespace EFTest.ViewModels
         }
 
         [RelayCommand]
-        public async Task CreateNewCoodinate()
+        public async Task CreateNewVector()
         {
             curVector = new VectorModel() { Coordinates = [X, Y, Z] };
             await repo.Create(curVector);

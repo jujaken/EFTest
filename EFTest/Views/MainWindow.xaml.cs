@@ -1,4 +1,6 @@
-﻿using System.Windows;
+﻿using CommunityToolkit.Mvvm.DependencyInjection;
+using EFTest.ViewModels;
+using System.Windows;
 
 namespace EFTest.Views
 {
@@ -7,6 +9,7 @@ namespace EFTest.Views
         public MainWindow()
         {
             InitializeComponent();
+            DataContext = Ioc.Default.GetService<MainVM>();
         }
     }
 }
