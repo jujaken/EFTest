@@ -3,6 +3,7 @@ using CommunityToolkit.Mvvm.Input;
 using EFTest.Data;
 using EFTest.Models;
 using Microsoft.Extensions.DependencyInjection;
+using System.Collections.ObjectModel;
 
 namespace EFTest.ViewModels
 {
@@ -12,11 +13,10 @@ namespace EFTest.ViewModels
         private readonly IRepo<VectorModel> repo = repo;
 
         [ObservableProperty]
-        private List<VectorVM> vectorsVMs = [];
+        private ObservableCollection<VectorVM> vectorsVMs = [];
 
         [ObservableProperty]
         private VectorVM? curVectorVM;
-
 
         [RelayCommand]
         public async Task CreateVectors()
