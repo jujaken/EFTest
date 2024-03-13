@@ -5,6 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:EFTest.Views"
         xmlns:vm="clr-namespace:EFTest.ViewModels"
+        d:DataContext="{d:DesignInstance Type=vm:MainVM}"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
 
@@ -16,8 +17,13 @@
         </Grid.ColumnDefinitions>
 
         <StackPanel Grid.Column="0">
-            <Button Content="Create new Vectors" Command="{Binding CreateVectorsCommand}"/>
-            <Button Content="Load Vectors" Command="{Binding LoadVectorsCommand}"/>
+            
+            <Button Content="Create new Vectors"
+                    Command="{Binding CreateVectorsCommand}"/>
+            
+            <Button Content="Load Vectors"
+                    Command="{Binding LoadVectorsCommand}"/>
+            
         </StackPanel>
 
         <ListBox x:Name="VectorViews" Grid.Column="1">
