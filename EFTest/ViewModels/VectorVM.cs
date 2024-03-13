@@ -48,7 +48,12 @@ namespace EFTest.ViewModels
         [RelayCommand]
         public async Task CreateNewVector()
         {
-            curVector = new VectorModel() { Coordinates = [X, Y, Z] };
+            var coordinates = new double[] { X, Y, Z };
+
+            if (curVector?.Coordinates?.Zip(coordinates).Count() == 0)
+                return;
+
+            curVector = new VectorModel() { Coordinates = coordinates };
             await repo.Create(curVector);
         }
 

@@ -27,24 +27,24 @@
             </Grid.ColumnDefinitions>
 
             <Grid Grid.Column="0">
-                <TextBlock Text="{Binding X, Mode=TwoWay}"/>
+                <TextBox Text="{Binding X, Mode=TwoWay}"/>
             </Grid>
 
             <Grid Grid.Column="1">
-                <TextBlock Text="{Binding Y, Mode=TwoWay}"/>
+                <TextBox Text="{Binding Y, Mode=TwoWay}"/>
             </Grid>
 
             <Grid Grid.Column="2">
-                <TextBlock Text="{Binding Z, Mode=TwoWay}"/>
+                <TextBox Text="{Binding Z, Mode=TwoWay}"/>
             </Grid>
 
             <StackPanel Grid.Column="3" Orientation="Horizontal">
 
                 <Button Content="Create new vector"
-                    Command="{Binding CreateNewVectorCommand}"/>
+                        Command="{Binding CreateNewVectorCommand}"/>
 
                 <Button Content="Save vector changes"
-                  Command="{Binding SaveVectorChangesCommand}"/>
+                        Command="{Binding SaveVectorChangesCommand}"/>
 
             </StackPanel>
 
