@@ -6,10 +6,10 @@ using EFTest.Models;
 
 namespace EFTest.ViewModels
 {
-    public partial class VectorVM(VectorModel vector) : ObservableObject
+    public partial class VectorVM(IRepo<VectorModel> repo) : ObservableObject
     {
-        private readonly VectorModel vector = vector;
-        private readonly IRepo<VectorModel> repo = Ioc.Default.GetRequiredService<IRepo<VectorModel>>();
+        private readonly IRepo<VectorModel> repo = repo;
+        private VectorModel? curVector;
 
         [ObservableProperty]
         private double x;
@@ -21,10 +21,42 @@ namespace EFTest.ViewModels
         private double z;
 
         [RelayCommand]
-        public async Task SaveCoordinates()
+        public async Task SetVector(VectorModel vector)
         {
-            vector.Coordinates = [X, Y, Z];
-            await repo.Update(vector);
+            if (vector.Coordinates == null)
+            {
+                vector.Coordinates = [0, 0, 0];
+                await repo.Update(vector);
+            }
+            else if (vector.Coordinates.Length < 3)
+            {
+                var coordinates = new double[3];
+
+                for (var i = 0; i < vector.Coordinates.Length; i++)
+                    coordinates[i] = vector.Coordinates[i];
+
+                vector.Coordinates = coordinates;
+                await repo.Update(vector);
+            }
+
+            curVector = vector;
+            (X, Y, Z) = (vector.Coordinates[0], vector.Coordinates[1], vector.Coordinates[2]);
+        }
+
+        [RelayCommand]
+        public async Task CreateNewCoodinate()
+        {
+            curVector = new VectorModel() { Coordinates = [X, Y, Z] };
+            await repo.Create(curVector);
+        }
+
+        public bool CanSaveVectorChanges => curVector != null;
+
+        [RelayCommand(CanExecute = nameof(CanSaveVectorChanges))]
+        public async Task SaveVectorChanges()
+        {
+            curVector!.Coordinates = [X, Y, Z];
+            await repo.Update(curVector);
         }
     }
 }

@@ -1,6 +1,7 @@
 ﻿using CommunityToolkit.Mvvm.DependencyInjection;
 using EFTest.Data;
 using EFTest.Models;
+using EFTest.ViewModels;
 using Microsoft.Extensions.DependencyInjection;
 using System.Windows;
 
@@ -18,7 +19,8 @@ namespace EFTest
         {
             var serviceCollection = new ServiceCollection()
                 .AddDbContext<AppDbContext>()
-                .AddTransient<IRepo<VectorModel>, Repo<VectorModel>>();
+                .AddTransient<IRepo<VectorModel>, Repo<VectorModel>>()
+                .AddTransient<VectorVM>();
 
             return serviceCollection.BuildServiceProvider();
         }
