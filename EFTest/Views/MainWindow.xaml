@@ -26,7 +26,7 @@
             
         </StackPanel>
 
-        <ListBox x:Name="VectorViews" Grid.Column="1">
+        <ListBox x:Name="VectorViews" Grid.Column="1" ItemsSource="{Binding VectorsVMs}">
 
             <ListBox.ItemTemplate>
 
