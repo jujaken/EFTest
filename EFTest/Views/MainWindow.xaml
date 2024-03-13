@@ -26,13 +26,19 @@
             
         </StackPanel>
 
-        <ListBox x:Name="VectorViews" Grid.Column="1" ItemsSource="{Binding VectorsVMs}">
+        <ListBox x:Name="VectorViews"
+                 Grid.Column="1"
+                 ItemsSource="{Binding VectorsVMs}">
 
             <ListBox.ItemTemplate>
 
                 <DataTemplate DataType="{x:Type vm:VectorVM}">
 
-                    <local:VectorView/>
+                    <StackPanel Orientation="Horizontal">
+
+                        <local:VectorView/>
+                        
+                    </StackPanel>
 
                 </DataTemplate>
 

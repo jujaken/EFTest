@@ -5,41 +5,51 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:EFTest.Views"
              xmlns:vm="clr-namespace:EFTest.ViewModels"
+             xmlns:conv="clr-namespace:EFTest.Converters"
              d:DataContext="{d:DesignInstance Type=vm:VectorVM}"
              mc:Ignorable="d" 
              d:DesignHeight="30" d:DesignWidth="800">
-   
-    <Grid Background="Snow">
-        
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition/>
-            <ColumnDefinition/>
-            <ColumnDefinition/>
-            <ColumnDefinition Width="auto"/>
-        </Grid.ColumnDefinitions>
-        
-        <Grid Grid.Column="0">
-            <TextBlock Text="{Binding X, Mode=TwoWay}"/>
-        </Grid>
 
-        <Grid Grid.Column="1">
-            <TextBlock Text="{Binding Y, Mode=TwoWay}"/>
-        </Grid>
+    <UserControl.Resources>
+        <conv:SelectedStateConverter x:Key="selectedStateConverter"/>
+    </UserControl.Resources>
 
-        <Grid Grid.Column="2">
-            <TextBlock Text="{Binding Z, Mode=TwoWay}"/>
-        </Grid>
+    <Border BorderThickness="2" BorderBrush="{Binding IsSelected, Converter={StaticResource selectedStateConverter}}">
 
-        <StackPanel Grid.Column="3" Orientation="Horizontal">
+        <Grid>
 
-            <Button Content="Create new vector"
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition Width="auto"/>
+            </Grid.ColumnDefinitions>
+
+            <Grid Grid.Column="0">
+                <TextBlock Text="{Binding X, Mode=TwoWay}"/>
+            </Grid>
+
+            <Grid Grid.Column="1">
+                <TextBlock Text="{Binding Y, Mode=TwoWay}"/>
+            </Grid>
+
+            <Grid Grid.Column="2">
+                <TextBlock Text="{Binding Z, Mode=TwoWay}"/>
+            </Grid>
+
+            <StackPanel Grid.Column="3" Orientation="Horizontal">
+
+                <Button Content="Create new vector"
                     Command="{Binding CreateNewVectorCommand}"/>
 
-            <Button Content="Save vector changes"
+                <Button Content="Save vector changes"
                   Command="{Binding SaveVectorChangesCommand}"/>
 
-        </StackPanel>
-    
-    </Grid>
-    
+            </StackPanel>
+
+
+        </Grid>
+        
+    </Border>
+
 </UserControl>

@@ -19,6 +19,9 @@ namespace EFTest.ViewModels
         [ObservableProperty]
         private double z;
 
+        [ObservableProperty]
+        private bool isSelected = false;
+
         [RelayCommand]
         public async Task SetVector(VectorModel vector)
         {

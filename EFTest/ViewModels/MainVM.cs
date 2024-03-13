@@ -60,7 +60,9 @@ namespace EFTest.ViewModels
         [RelayCommand(CanExecute = nameof(CanDownVector))]
         public void DownVector()
         {
+            CurVectorVM!.IsSelected = false;
             CurVectorVMIndex--;
+            CurVectorVM.IsSelected = true;
         }
 
         public bool CanUpVector => CurVectorVMIndex != VectorsVMs.Count - 1;
@@ -68,7 +70,9 @@ namespace EFTest.ViewModels
         [RelayCommand(CanExecute = nameof(CanUpVector))]
         public void UpVector()
         {
+            CurVectorVM!.IsSelected = false;
             CurVectorVMIndex++;
+            CurVectorVM.IsSelected = true;
         }
     }
 }
