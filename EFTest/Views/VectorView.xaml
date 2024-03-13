@@ -14,7 +14,8 @@
         <conv:SelectedStateConverter x:Key="selectedStateConverter"/>
     </UserControl.Resources>
 
-    <Border BorderThickness="2" BorderBrush="{Binding IsSelected, Converter={StaticResource selectedStateConverter}}">
+    <Border BorderThickness="2"
+            BorderBrush="{Binding IsSelected, Converter={StaticResource selectedStateConverter}}">
 
         <Grid>
 
