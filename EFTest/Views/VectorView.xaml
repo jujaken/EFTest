@@ -15,7 +15,7 @@
     </UserControl.Resources>
 
     <Border BorderThickness="2"
-            BorderBrush="{Binding IsSelected, Converter={StaticResource selectedStateConverter}}">
+            BorderBrush="{Binding IsSelected, Mode=TwoWay, Converter={StaticResource selectedStateConverter}}">
 
         <Grid>
 

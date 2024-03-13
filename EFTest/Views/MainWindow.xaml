@@ -34,11 +34,7 @@
 
                 <DataTemplate DataType="{x:Type vm:VectorVM}">
 
-                    <StackPanel Orientation="Horizontal">
-
-                        <local:VectorView/>
-                        
-                    </StackPanel>
+                    <local:VectorView/>
 
                 </DataTemplate>
 
